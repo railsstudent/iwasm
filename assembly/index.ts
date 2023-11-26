@@ -1,8 +1,11 @@
 // The entry file of your WebAssembly module.
 import { log } from './common/log';
 
+// @external('./common.ts', 'abort')
+// export declare function abort(): void;
+
 export function minusOne(n: i32): i32 {
-  log(n);
+  log('minusOne', n);
   
   if (n === 44) {
     abort();
@@ -12,7 +15,7 @@ export function minusOne(n: i32): i32 {
 }
 
 export function fizzbuzz(n: i32): String | null {
-  log(n);
+  log('fizzbuzz', n);
 
   if (n % 15 === 0) {
     return 'fizzbuzz';
