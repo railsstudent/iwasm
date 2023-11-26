@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- <script type="module">
+import { minusOne } from "./build/release.js";
+document.body.innerText = minusOne(43);
+</script> -->
+</head>
+<body>
+    <script src="/js/loader.js"></script>
+    <script>
+        const WL = new WasmLoader();
+        WL.wasm('/build/release.wasm')
+            .then((instance) => {
+                console.log(instance);
+                const { minusOne, addOne } = instance;
+                document.write(`<p>minusOne(42) = ${minusOne(42)}</p>`);
+                document.write(`<p>addOne(42) = ${addOne(42)}</p>`);
+            })
+    </script>
+</body>
+</html>
