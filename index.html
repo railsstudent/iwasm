@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- <script type="module">
-import { minusOne } from "./build/release.js";
-document.body.innerText = minusOne(43);
-</script> -->
-</head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/@assemblyscript/loader/umd/index.js"></script>
-    <script src="/js/loader.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@assemblyscript/loader/umd/index.js"></script> -->
+    <!-- <script src="/js/loader.js"></script>
     <script>
         const WL = new WasmLoader();
         WL.wasm('/build/release.wasm')
@@ -22,10 +16,26 @@ document.body.innerText = minusOne(43);
                 document.write(`${memoryArray[2]}<br >`);
 
                 document.write(`minusOne(42) = ${minusOne(42)}<br>`);
+                // document.write(`minusOne(44) = ${minusOne(44)}<br>`);
                 document.write(`addOne(42) = ${addOne(42)}<br>`);
-                const str = __getString(fizzbuzz(3));
-                document.write(`fizzbuzz(3) = ${str}`);
+                // const str = __getString(fizzbuzz(3));
+                document.write(`fizzbuzz(3) = ${fizzbuzz(3)}`);
             })
+    </script> -->
+    
+    <script type="module">
+        import { minusOne, addOne, fizzbuzz, readMemory, memory } from "./build/release.js";
+        const memoryArray = new Uint8Array(memory.buffer);
+        document.write(`${memoryArray[0]}<br >`);
+        document.write(`${memoryArray[1]}<br >`);
+
+        memoryArray[2] = 42;
+        document.write(`${memoryArray[2]}<br >`);
+        document.write(`minusOne(42) = ${minusOne(42)}<br>`);
+        document.write(`addOne(42) = ${addOne(42)}<br>`);
+        document.write(`fizzbuzz(3) = ${fizzbuzz(3)}<br>`);
+        document.write(`fizzbuzz(10) = ${fizzbuzz(10)}<br>`);
+        document.write(`fizzbuzz(30) = ${fizzbuzz(30)}<br>`);
     </script>
 </body>
 </html>
