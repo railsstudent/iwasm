@@ -1,14 +1,13 @@
 // The entry file of your WebAssembly module.
-import { log } from './common/log';
-
-// @external('./common.ts', 'abort')
-// export declare function abort(): void;
+// import { log } from './common/log';
+// import { abort } from './common/error';
+import { log, abort } from './common';
 
 export function minusOne(n: i32): i32 {
   log('minusOne', n);
   
   if (n === 44) {
-    abort();
+    abort('44 is an unlucky number in Chinese');
   }
   
   return n - 1;

@@ -1,3 +1,3 @@
-export function log(from: string, n: i32): void {
+export function log(from: String, n: i32): void {
     console.log(`${from} => ${n}`);
 }
