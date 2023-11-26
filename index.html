@@ -14,7 +14,7 @@ document.body.innerText = minusOne(43);
         WL.wasm('/build/release.wasm')
             .then((instance) => {
                 console.log(instance);
-                const { minusOne, addOne, fizzbuzz, readMemory, memory } = instance;
+                const { minusOne, addOne, fizzbuzz, readMemory, memory, __getString } = instance;
                 const memoryArray = new Uint8Array(memory.buffer);
                 document.write(`${memoryArray[1]}<br >`);
 
@@ -23,7 +23,8 @@ document.body.innerText = minusOne(43);
 
                 document.write(`minusOne(42) = ${minusOne(42)}<br>`);
                 document.write(`addOne(42) = ${addOne(42)}<br>`);
-                document.write(`fizzbuzz(3) = ${fizzbuzz(3)}`);
+                const str = __getString(fizzbuzz(3));
+                document.write(`fizzbuzz(3) = ${str}`);
             })
     </script>
 </body>
