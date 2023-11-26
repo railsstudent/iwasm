@@ -7,15 +7,23 @@ document.body.innerText = minusOne(43);
 </script> -->
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/@assemblyscript/loader/umd/index.js"></script>
     <script src="/js/loader.js"></script>
     <script>
         const WL = new WasmLoader();
         WL.wasm('/build/release.wasm')
             .then((instance) => {
                 console.log(instance);
-                const { minusOne, addOne } = instance;
-                document.write(`<p>minusOne(42) = ${minusOne(42)}</p>`);
-                document.write(`<p>addOne(42) = ${addOne(42)}</p>`);
+                const { minusOne, addOne, fizzbuzz, readMemory, memory } = instance;
+                const memoryArray = new Uint8Array(memory.buffer);
+                document.write(`${memoryArray[1]}<br >`);
+
+                memoryArray[2] = 42;
+                document.write(`${memoryArray[2]}<br >`);
+
+                document.write(`minusOne(42) = ${minusOne(42)}<br>`);
+                document.write(`addOne(42) = ${addOne(42)}<br>`);
+                document.write(`fizzbuzz(3) = ${fizzbuzz(3)}`);
             })
     </script>
 </body>
