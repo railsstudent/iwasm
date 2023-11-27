@@ -1,13 +1,13 @@
 // const imports = {
 //     "env": {
-//         abort() {
-//             throw new Error('Abort called from wasm file');
+//         abort(msg) {
+//             throw new Error(msg || 'Abort called from wasm file');
 //         }
 //     },
-//     "log": {
-//         log(n) {
-//             console.log(n);
-//         }
+//     "index": {
+//         log(from, n) {
+//             console.log(`${from} => ${n}`);
+//         }        
 //     }
 // }
 

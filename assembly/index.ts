@@ -1,7 +1,5 @@
 // The entry file of your WebAssembly module.
-// import { log } from './common/log';
-// import { abort } from './common/error';
-import { log, abort } from './common';
+import { log } from './common';
 
 export function minusOne(n: i32): i32 {
   log('minusOne', n);
@@ -32,6 +30,8 @@ store<u8>(0, 21);
 store<u8>(1, 99);
 
 export function readMemory(n: i32): i32 {
+  log('readMemory (index)', n)
+
   const valueAtIndexOne = load<u8>(n);
   return valueAtIndexOne;
 }
